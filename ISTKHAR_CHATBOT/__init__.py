@@ -17,11 +17,10 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 from pyrogram import Client
 from pyrogram.enums import ParseMode
 import config
-import uvloop
 
+# uvloop को यहाँ से हटा दिया गया है
 ID_CHATBOT = None
 CLONE_OWNERS = {}
-uvloop.install()
 
 logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
