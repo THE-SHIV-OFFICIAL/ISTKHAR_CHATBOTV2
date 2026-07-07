@@ -1,5 +1,15 @@
+import asyncio
+import sys
 import logging
 import time
+
+# Python 3.14 के एरर को रोकने के लिए नया इवेंट लूप सेट करें
+try:
+    loop = asyncio.get_running_loop()
+except RuntimeError:
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
 from pymongo import MongoClient
 from Abg import patch
 from ISTKHAR_CHATBOT.userbot.userbot import Userbot
@@ -8,7 +18,7 @@ from pyrogram import Client
 from pyrogram.enums import ParseMode
 import config
 import uvloop
-import time
+
 ID_CHATBOT = None
 CLONE_OWNERS = {}
 uvloop.install()
@@ -29,6 +39,7 @@ mongo = MongoClient(config.MONGO_URL)
 OWNER = config.OWNER_ID
 _boot_ = time.time()
 clonedb = None
+
 def dbb():
     global db
     global clonedb
@@ -72,7 +83,7 @@ async def get_idclone_owner(clone_id):
         return data["user_id"]
     return None
 
-    
+
 class ISTKHAR_CHATBOT(Client):
     def __init__(self):
         super().__init__(
@@ -90,7 +101,7 @@ class ISTKHAR_CHATBOT(Client):
         self.name = self.me.first_name + " " + (self.me.last_name or "")
         self.username = self.me.username
         self.mention = self.me.mention
-        
+
     async def stop(self):
         await super().stop()
 
@@ -119,4 +130,3 @@ def get_readable_time(seconds: int) -> str:
 
 ISTKHAR_CHATBOT = ISTKHAR_CHATBOT()
 userbot = Userbot()
-
