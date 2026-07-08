@@ -1,16 +1,19 @@
 {
-  "name": "ISTKHAR_CHATBOT",
-  "description": "A telegram bot",
+  "name": "ISTKHAR_CHATBOT V2",
+  "description": "An Advanced Telegram AI Chatbot with Multi-Model Fallback & Smart Memory.",
   "logo": "https://files.catbox.moe/fgfwbn.jpg",
   "keywords": [
     "Chatbot",
     "mongodb",
     "python",
-    "pyrogram"
+    "pyrogram",
+    "openrouter"
   ],
-    "buildpacks": [{
-    "url": "heroku/python"
-  }],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
   "repository": "https://github.com/TEAM-ISTKHAR/ISTKHAR-CHATBOT",
   "env": {
     "BOT_TOKEN": {
@@ -19,18 +22,43 @@
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Fill Here A Pyrogram String Session For Id-Chatbot, Get it from: https://telegram.tools/session-string-generator#pyrogram,user (This is Optional, If you dont want id-chatbot you can skip this variable)",
+      "description": "Fill Here A Pyrogram String Session For Id-Chatbot (Optional)",
       "required": false,
       "value": ""
     },
     "OWNER_ID": {
       "description": "Fill Here Your Owner User Id",
       "required": true,
-      "value": "1808943146"
+      "value": "7995626429"
     },
     "MONGO_URL": {
-      "description": "Get a mongodb url from https://cloud.mongodb.com.",
+      "description": "Your Primary MongoDB URL",
       "required": true,
+      "value": ""
+    },
+    "MONGO_URL_2": {
+      "description": "Second MongoDB URL for Load Balancing (Optional but recommended)",
+      "required": false,
+      "value": ""
+    },
+    "MONGO_URL_3": {
+      "description": "Third MongoDB URL for Load Balancing (Optional)",
+      "required": false,
+      "value": ""
+    },
+    "OPENROUTER_KEY_1": {
+      "description": "Primary OpenRouter API Key for AI (Get from openrouter.ai)",
+      "required": true,
+      "value": ""
+    },
+    "OPENROUTER_KEY_2": {
+      "description": "Fallback OpenRouter API Key 2 (Optional)",
+      "required": false,
+      "value": ""
+    },
+    "OPENROUTER_KEY_3": {
+      "description": "Fallback OpenRouter API Key 3 (Optional)",
+      "required": false,
       "value": ""
     }
   }
